@@ -10,12 +10,12 @@ class App extends Component{
     constructor(){
         super()
         this.state={
-            robots: [],
+            robots: [],                                                                  
             searchfield: ''
         }
     }
 // props
-// state
+// state0i
 // childer
     componentDidMount(){
         fetch('https://jsonplaceholder.typicode.com/users')
