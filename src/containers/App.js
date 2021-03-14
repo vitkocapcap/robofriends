@@ -15,7 +15,7 @@ function App() {
   // }
   const [robots, setRobots] = useState([]);
   const [searchfield, setSearchfield] = useState("");
-
+  const [count, setCount] = useState(0);
   // componentDidMount() {
   //   fetch("https://jsonplaceholder.typicode.com/users")
   //     .then((response) => response.json())
@@ -25,11 +25,13 @@ function App() {
     fetch("https://jsonplaceholder.typicode.com/users")
       .then((response) => response.json())
       .then((users) => {
-        setRobots(users);
+        setRobots(users); //continuously running
       });
-  }, [searchfield]);
+  }, []);
+
+  // }, [searchfield]);
   //the [searchfield] is an optional condition, the [] means the useEffect
-  //changes only when the [] changes.
+  //changes only when the [] changes. Let say [] is conditionDidMount
 
   const onSearchChange = (event) => {
     setSearchfield(event.target.value);
@@ -44,6 +46,7 @@ function App() {
   ) : (
     <div className="tc">
       <h1 className="f1">RoboFriends</h1>
+      <button onClick={() => setCount(count + 1)}>Click me pls</button>
       <SearchBox searchChange={onSearchChange} /> {/*"this" is the App */}
       <Scroll>
         <ErrorBoundary>
